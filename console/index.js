@@ -34,6 +34,13 @@ const script = new Script({
             const name = message.text.trim();
             bot.setProp('name', name);
             return bot.say(`I'll call you ${name}! Great!`)
+                .then(() => 'next_1');
+        }
+    },
+
+        next_1: {
+        receive: (bot, message) => {
+            return bot.say(`${name}, ask me something!`)
                 .then(() => 'finish');
         }
     },
