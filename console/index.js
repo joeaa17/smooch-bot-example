@@ -42,7 +42,7 @@ const script = new Script({
         receive: (bot, message) => {
             return bot.getProp('name')
                 .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
-                        'teach me how to do anything else!'))
+                        'teach me how to do anything else yet!'))
                 .then(() => 'finish');
         }
     }
