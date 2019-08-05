@@ -23,24 +23,17 @@ class ConsoleBot extends Bot {
 const script = new Script({
     start: {
         receive: (bot) => {
-            return bot.say('Hi! I\'m Smooch Bot!')
+            return bot.say('Hi! I\'m your Butler!')
                 .then(() => 'askName');
         }
     },
 
     askName: {
-        prompt: (bot) => bot.say('What\'s your name'),
+        prompt: (bot) => bot.say('What\'s your dear name sir/madam'),
         receive: (bot, message) => {
             const name = message.text.trim();
             bot.setProp('name', name);
-            return bot.say(`I'll call you ${name}! Great!`)
-                .then(() => 'next_1');
-        }
-    },
-
-        next_1: {
-        receive: (bot, message) => {
-            return bot.say(`${name}, ask me something!`)
+            return bot.say(`I'll call you ${name}!`)
                 .then(() => 'finish');
         }
     },
@@ -50,7 +43,7 @@ const script = new Script({
             return bot.getProp('name')
                 .then((name) => bot.say(`Sorry ${name}, my creator didn't ` +
                         'teach me how to do anything else!'))
-                .then(() => 'next_1');
+                .then(() => 'finish');
         }
     }
 });
